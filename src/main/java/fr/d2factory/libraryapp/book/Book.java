@@ -13,4 +13,18 @@ public class Book {
         this.author = author;
         this.isbn = isbn;
     }
+
+    public ISBN getIsbn() {
+        return isbn;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj.hashCode() == this.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return isbn.hashCode();
+    }
 }

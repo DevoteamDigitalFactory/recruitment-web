@@ -6,4 +6,18 @@ public class ISBN {
     public ISBN(long isbnCode) {
         this.isbnCode = isbnCode;
     }
+
+    public long getIsbnCode() {
+        return isbnCode;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj.hashCode() == this.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.hashCode(isbnCode);
+    }
 }
