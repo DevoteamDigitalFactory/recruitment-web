@@ -1,6 +1,6 @@
 package fr.d2factory.libraryapp.library;
 
-import fr.d2factory.libraryapp.Config;
+import fr.d2factory.libraryapp.Config.Config;
 import fr.d2factory.libraryapp.book.Book;
 import fr.d2factory.libraryapp.book.BookRepository;
 import fr.d2factory.libraryapp.book.ISBN;
@@ -101,9 +101,9 @@ public class LibraryTest {
         Member mathieu = new Resident(1000);
 
         // 10 days *  10 cents  = 100 cents
-        library.borrowBook(listOfBooks.get(0).getIsbn().getIsbnCode(), mathieu, LocalDate.now().minusDays(10));
+        library.borrowBook(listOfBooks.get(0).getIsbn().getIsbnCode(), mathieu, LocalDate.now().minusDays(1));
         library.returnBook(listOfBooks.get(0), mathieu);
-        Assert.assertEquals( 900 , mathieu.getWallet(),0);
+        Assert.assertEquals( 990 , mathieu.getWallet(),0);
     }
 
     @Test

@@ -1,4 +1,4 @@
-package fr.d2factory.libraryapp;
+package fr.d2factory.libraryapp.Config;
 
 public class Config {
 
