@@ -35,7 +35,9 @@ public class LibraryTest {
     public void setup(){
         // new instances for each test
         bookRepository = new BookRepository();
-        library = new BookLibrary(bookRepository);
+
+        // dependency injection
+        library = new LibraryImpl(bookRepository);
 
         // Reading books from json file
         try {

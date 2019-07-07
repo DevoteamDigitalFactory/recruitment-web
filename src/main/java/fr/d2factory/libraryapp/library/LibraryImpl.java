@@ -7,11 +7,11 @@ import fr.d2factory.libraryapp.member.Member;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class BookLibrary implements Library {
+public class LibraryImpl implements Library {
 
     // dependency injection
     // composition
-    public BookLibrary(BookRepository bookRepository) {
+    public LibraryImpl(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 

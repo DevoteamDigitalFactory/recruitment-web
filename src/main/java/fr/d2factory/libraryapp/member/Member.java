@@ -17,6 +17,7 @@ public abstract class Member {
     private float wallet;
     protected int MaxDaysToKeep;
     protected List<Book> heldBooks = new ArrayList<>();
+
     /**
      * The member should pay their books when they are returned to the library
      *
@@ -27,6 +28,7 @@ public abstract class Member {
     public int getMaxDaysToKeep () {
         return MaxDaysToKeep;
     }
+
     public List<Book> getHeldBooks() {
         return heldBooks;
     }
