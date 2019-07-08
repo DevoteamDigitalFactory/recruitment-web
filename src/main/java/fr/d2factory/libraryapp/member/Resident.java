@@ -1,5 +1,6 @@
 package fr.d2factory.libraryapp.member;
 
+import fr.d2factory.libraryapp.Config;
 import fr.d2factory.libraryapp.library.WalletNotEnoughException;
 
 public class Resident extends Member {
@@ -7,10 +8,11 @@ public class Resident extends Member {
     @Override
     public void payBook(int numberOfDays) {
         int moneyToPay;
-        if (numberOfDays <= 60) {
-            moneyToPay = numberOfDays * 10;
+        if (numberOfDays <= Config.getDaysBeforeLateResident()) {
+            moneyToPay = numberOfDays * Config.getResidentPriceBeforeLate();
         } else {
-            moneyToPay = (numberOfDays - 60) * 20 + 10 * 60;
+            moneyToPay = (numberOfDays - Config.getDaysBeforeLateResident()) * Config.getResidentPriceafterLate()
+                    + Config.getResidentPriceBeforeLate() * Config.getDaysBeforeLateResident();
         }
 
         if(moneyToPay > this.getWallet()) {
@@ -22,6 +24,6 @@ public class Resident extends Member {
 
     public Resident(int wallet) {
         super(wallet);
-        MaxDaysToKeep = 60;
+        MaxDaysToKeep = Config.getDaysBeforeLateResident();
     }
 }
