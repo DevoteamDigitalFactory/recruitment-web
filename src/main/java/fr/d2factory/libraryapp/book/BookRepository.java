@@ -13,20 +13,33 @@ public class BookRepository {
     private Map<Book, LocalDate> borrowedBooks = new HashMap<>();
 
     public void addBooks(List<Book> books){
-        //TODO implement the missing feature
+
+        books.forEach(book -> {
+            if (availableBooks.containsKey(book.getISBN())) {
+                throw new AlreadyExistBookException("Book with ISBN " +book.isbn.isbnCode+ " is already exist");
+            } else {
+                availableBooks.put(book.getISBN(),book);
+            }
+        });
     }
 
     public Book findBook(long isbnCode) {
-        //TODO implement the missing feature
-        return null;
+        return availableBooks.get(new ISBN(isbnCode));
     }
 
-    public void saveBookBorrow(Book book, LocalDate borrowedAt){
-        //TODO implement the missing feature
+    public void saveBookBorrow(Book book, LocalDate borrowedAt) throws BookAlreadyBorrowedException {
+        if (borrowedBooks.containsKey(book)) {
+            throw new BookAlreadyBorrowedException("Book with ISBN "+book.isbn.isbnCode+" is already borrowed");
+        } else {
+            borrowedBooks.put(book, borrowedAt);
+        }
+    }
+
+    public void removeBookFromBorrowedBooks(Book book){
+        borrowedBooks.remove(book);
     }
 
     public LocalDate findBorrowedBookDate(Book book) {
-        //TODO implement the missing feature
-        return null;
+        return borrowedBooks.get(book);
     }
 }
