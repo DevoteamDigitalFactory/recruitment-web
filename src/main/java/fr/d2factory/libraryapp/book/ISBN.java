@@ -1,7 +1,5 @@
 package fr.d2factory.libraryapp.book;
 
-import java.io.Serializable;
-
 public class ISBN {
     long isbnCode;
 

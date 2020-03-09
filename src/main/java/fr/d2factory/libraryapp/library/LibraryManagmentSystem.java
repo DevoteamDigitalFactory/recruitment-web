@@ -2,12 +2,13 @@ package fr.d2factory.libraryapp.library;
 
 import fr.d2factory.libraryapp.book.Book;
 import fr.d2factory.libraryapp.book.BookRepository;
-import fr.d2factory.libraryapp.book.ISBN;
 import fr.d2factory.libraryapp.member.Member;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 public class LibraryManagmentSystem implements Library {
 
@@ -24,10 +25,10 @@ public class LibraryManagmentSystem implements Library {
             throw new HasLateBooksException();
         }
         book = bookRepository.findBook(isbnCode);
-        if(book != null){
-            bookRepository.saveBookBorrow(book, borrowedAt);
-            bookRepository.saveBorrower(book, member);
-        }
+        Optional<Book> opBook = Optional.ofNullable(book);
+        Consumer<Book> c1= b -> bookRepository.saveBookBorrow(b, borrowedAt);
+        Consumer<Book> c2 = c1.andThen(b-> bookRepository.saveBorrower(b, member));
+        opBook.ifPresent(c2);
         return book;
     }
 

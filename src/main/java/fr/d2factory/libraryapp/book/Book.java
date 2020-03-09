@@ -1,6 +1,5 @@
 package fr.d2factory.libraryapp.book;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**

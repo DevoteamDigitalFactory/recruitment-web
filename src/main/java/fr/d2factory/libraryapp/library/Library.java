@@ -4,7 +4,6 @@ import fr.d2factory.libraryapp.book.Book;
 import fr.d2factory.libraryapp.member.Member;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * The library class is in charge of stocking the books and managing the return delays and members
